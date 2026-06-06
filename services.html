@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nos Services — Dr. Sarra Haouet, Dentiste à Nabeul</title>
+  <meta name="description" content="Découvrez l'ensemble des prestations du cabinet dentaire Dr. Sarra Haouet à Nabeul : soins conservateurs, prothèses, orthodontie, blanchiment, pédodontie et chirurgie dentaire.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --c-ink:      #0E2340;
+      --c-navy:     #1B3D6E;
+      --c-navy-mid: #2A5A9A;
+      --c-gold:     #C59B52;
+      --c-gold-lt:  #F4E9CC;
+      --c-bg:       #F7F9FB;
+      --c-bg-alt:   #EEF3FA;
+      --c-surface:  #FFFFFF;
+      --c-text:     #1A2332;
+      --c-muted:    #6B7A8D;
+      --c-border:   #D8E2EF;
+      --c-dark:     #0A1828;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Nunito', sans-serif; color: var(--c-text); background: var(--c-bg); overflow-x: hidden; }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── NAV (identical) ── */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.5rem 3rem;
+      transition: background 0.35s, box-shadow 0.35s, padding 0.35s;
+    }
+    .nav.scrolled {
+      background: rgba(255,255,255,0.93);
+      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 1px 28px rgba(14,35,64,0.1);
+      padding: 0.875rem 3rem;
+    }
+    .nav-logo { display: flex; flex-direction: column; gap: 0.1rem; }
+    .nav-logo-name { font-family: 'DM Serif Display', serif; font-size: 1.1rem; line-height: 1.1; color: #fff; transition: color 0.3s; }
+    .nav-logo-tag { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--c-gold); font-weight: 700; }
+    .nav.scrolled .nav-logo-name { color: var(--c-ink); }
+    .nav-links { display: flex; align-items: center; gap: 2.25rem; list-style: none; }
+    .nav-links a { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: rgba(255,255,255,0.8); transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--c-gold); }
+    .nav.scrolled .nav-links a { color: var(--c-muted); }
+    .nav.scrolled .nav-links a:hover, .nav.scrolled .nav-links a.active { color: var(--c-navy); }
+    .nav-rdv { background: var(--c-gold); color: var(--c-ink) !important; padding: 0.55rem 1.3rem; font-weight: 800 !important; }
+    .nav-rdv:hover { background: #d4a83c !important; color: var(--c-ink) !important; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: #fff; transition: all 0.3s; }
+    .nav.scrolled .hamburger span { background: var(--c-ink); }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mob-nav { display: none; position: fixed; inset: 0; z-index: 199; background: var(--c-dark); flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem; }
+    .mob-nav.open { display: flex; }
+    .mob-nav a { font-family: 'DM Serif Display', serif; font-size: 2.25rem; color: #fff; transition: color 0.2s; }
+    .mob-nav a:hover { color: var(--c-gold); }
+    .mob-nav-phone { font-size: 1rem !important; font-family: 'Nunito', sans-serif !important; color: var(--c-gold) !important; font-weight: 700; border: 1px solid rgba(197,155,82,0.4); padding: 0.75rem 2rem; }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      background: var(--c-dark);
+      position: relative; overflow: hidden;
+      padding: 10rem 3rem 6rem;
+      min-height: 52vh;
+      display: flex; align-items: flex-end;
+    }
+    .page-hero img {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; object-position: center; opacity: 0.22;
+    }
+    .page-hero-inner { position: relative; z-index: 2; max-width: 1160px; margin: 0 auto; width: 100%; }
+    .page-eyebrow { font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--c-gold); font-weight: 800; margin-bottom: 1rem; }
+    .page-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.5rem, 5vw, 4.25rem);
+      color: #fff; line-height: 1.1; margin-bottom: 0.75rem;
+    }
+    .page-sub { font-size: 1.05rem; color: rgba(255,255,255,0.6); max-width: 540px; line-height: 1.7; }
+    .page-rule { width: 52px; height: 2px; background: var(--c-gold); margin: 1.5rem 0; }
+
+    /* ── LAYOUT ── */
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 2rem; }
+    .s-pad { padding: 6rem 0; }
+    .eyebrow { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--c-gold); font-weight: 800; margin-bottom: 0.75rem; }
+    .s-title { font-family: 'DM Serif Display', serif; font-size: clamp(1.6rem, 3vw, 2.4rem); color: var(--c-ink); line-height: 1.2; margin-bottom: 1rem; }
+    .s-rule { width: 46px; height: 2px; background: var(--c-gold); margin-bottom: 1.5rem; }
+
+    /* ── CATEGORY INTRO ── */
+    .cat-section { padding: 5rem 0; }
+    .cat-section:nth-child(even) { background: var(--c-bg-alt); }
+    .cat-section:nth-child(odd) { background: var(--c-bg); }
+    .cat-head { margin-bottom: 3rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--c-border); }
+    .cat-num {
+      font-family: 'DM Serif Display', serif; font-size: 5rem; color: var(--c-gold-lt);
+      line-height: 1; margin-bottom: -1rem; display: block;
+    }
+    .cat-title { font-family: 'DM Serif Display', serif; font-size: clamp(1.5rem, 2.5vw, 2rem); color: var(--c-ink); }
+    .cat-desc { margin-top: 0.6rem; font-size: 0.95rem; color: var(--c-muted); line-height: 1.75; max-width: 620px; }
+    .srv-list { display: flex; flex-direction: column; gap: 0; }
+    .srv-row {
+      display: grid; grid-template-columns: 72px 1fr;
+      gap: 0 2rem; padding: 2rem 0;
+      border-bottom: 1px solid var(--c-border);
+      align-items: start;
+      transition: background 0.2s;
+    }
+    .srv-row:last-child { border-bottom: none; }
+    .srv-row:hover { background: rgba(197,155,82,0.04); }
+    .srv-row-icon {
+      width: 52px; height: 52px; background: var(--c-gold-lt);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--c-gold); flex-shrink: 0;
+    }
+    .srv-row-body {}
+    .srv-row-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.15rem; color: var(--c-ink); margin-bottom: 0.4rem;
+    }
+    .srv-row-desc { font-size: 0.9rem; color: var(--c-muted); line-height: 1.75; margin-bottom: 0.75rem; }
+    .srv-row-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .tag {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em;
+      text-transform: uppercase; padding: 0.25rem 0.65rem;
+      background: var(--c-bg-alt); color: var(--c-muted);
+      border: 1px solid var(--c-border);
+    }
+
+    /* ── CTA BAND ── */
+    .cta-band {
+      background: var(--c-navy); padding: 5rem 2rem;
+      text-align: center;
+    }
+    .cta-band p { font-size: 0.9rem; color: rgba(255,255,255,0.65); margin-bottom: 2.5rem; max-width: 480px; margin-left: auto; margin-right: auto; line-height: 1.7; }
+    .cta-band h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+      color: #fff; margin-bottom: 0.75rem;
+    }
+    .cta-band-rule { width: 46px; height: 2px; background: var(--c-gold); margin: 0 auto 1.5rem; }
+    .cta-btns { display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+    .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.9rem 1.8rem; font-family: 'Nunito', sans-serif; font-size: 0.8rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; border: none; transition: all 0.25s; }
+    .btn-gold { background: var(--c-gold); color: var(--c-ink); }
+    .btn-gold:hover { background: #d4a83c; transform: translateY(-2px); box-shadow: 0 10px 28px rgba(197,155,82,0.35); }
+    .btn-ghost-light { background: transparent; color: rgba(255,255,255,0.8); border: 1px solid rgba(255,255,255,0.25); }
+    .btn-ghost-light:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.6); color: #fff; }
+
+    /* ── FOOTER ── */
+    .footer { background: var(--c-dark); color: rgba(255,255,255,0.65); padding: 3.5rem 0 1.5rem; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; margin-bottom: 2.5rem; }
+    .f-brand-name { font-family: 'DM Serif Display', serif; font-size: 1.2rem; color: #fff; margin-bottom: 0.35rem; }
+    .f-brand-sub { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--c-gold); margin-bottom: 1rem; font-weight: 700; }
+    .f-brand-p { font-size: 0.85rem; line-height: 1.7; max-width: 280px; }
+    .f-col h4 { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--c-gold); font-weight: 800; margin-bottom: 1rem; }
+    .f-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .f-col ul a { font-size: 0.875rem; transition: color 0.2s; }
+    .f-col ul a:hover { color: #fff; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.78rem; }
+
+    /* ── FLOATING CTA ── */
+    .fcta { position: fixed; bottom: 2rem; right: 1.75rem; z-index: 190; display: flex; flex-direction: column; gap: 0.7rem; }
+    .fab { display: flex; align-items: center; gap: 0.6rem; padding: 0.85rem 1.25rem; border-radius: 100px; font-size: 0.82rem; font-weight: 800; box-shadow: 0 4px 22px rgba(0,0,0,0.22); transition: transform 0.2s, box-shadow 0.2s; white-space: nowrap; }
+    .fab:hover { transform: translateY(-2px) scale(1.04); box-shadow: 0 8px 30px rgba(0,0,0,0.28); }
+    .fab-call { background: var(--c-navy); color: #fff; }
+    .fab-wa { background: #25D366; color: #fff; }
+
+    /* ── REVEAL ── */
+    .rv { opacity: 0; transform: translateY(26px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .rv.in { opacity: 1; transform: none; }
+    .d1 { transition-delay: 0.1s; } .d2 { transition-delay: 0.2s; } .d3 { transition-delay: 0.3s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .nav { padding: 1.25rem 2rem; } .nav.scrolled { padding: 0.75rem 2rem; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .nav { padding: 1rem 1.5rem; } .nav.scrolled { padding: 0.75rem 1.5rem; }
+      .nav-links { display: none; } .hamburger { display: flex; }
+      .page-hero { padding: 8rem 1.5rem 4rem; }
+      .cat-section { padding: 3.5rem 0; }
+      .srv-row { grid-template-columns: 1fr; gap: 1rem; }
+      .srv-row-icon { width: 44px; height: 44px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+      .fcta { bottom: 1.25rem; right: 1rem; }
+      .fab span { display: none; }
+      .fab { padding: 0.9rem; border-radius: 50%; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav" aria-label="Navigation principale">
+  <a href="./index.html" class="nav-logo" aria-label="Dr. Sarra Haouet – Accueil">
+    <span class="nav-logo-name">Dr. Sarra Haouet</span>
+    <span class="nav-logo-tag">Dentiste · Nabeul</span>
+  </a>
+  <ul class="nav-links" role="list">
+    <li><a href="./index.html">Accueil</a></li>
+    <li><a href="./services.html" class="active">Services</a></li>
+    <li><a href="./equipe.html">Le Cabinet</a></li>
+    <li><a href="./index.html#contact">Contact</a></li>
+    <li><a href="https://wa.me/21658184597" class="nav-rdv" target="_blank" rel="noopener">Rendez-vous</a></li>
+  </ul>
+  <button class="hamburger" id="ham" aria-label="Ouvrir le menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mob-nav" id="mobNav" role="dialog" aria-label="Menu">
+  <a href="./index.html" onclick="closeMob()">Accueil</a>
+  <a href="./services.html" onclick="closeMob()">Services</a>
+  <a href="./equipe.html" onclick="closeMob()">Le Cabinet</a>
+  <a href="./index.html#contact" onclick="closeMob()">Contact</a>
+  <a href="tel:+21658184597" class="mob-nav-phone" onclick="closeMob()">+216 58 184 597</a>
+</div>
+
+<!-- PAGE HERO -->
+<header class="page-hero" aria-label="Services dentaires">
+  <img src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=1400&q=80" alt="" loading="eager" aria-hidden="true">
+  <div class="page-hero-inner">
+    <p class="page-eyebrow">Cabinet Dr. Sarra Haouet</p>
+    <h1 class="page-title">Nos Prestations</h1>
+    <div class="page-rule" aria-hidden="true"></div>
+    <p class="page-sub">Une offre complète de soins bucco-dentaires, de la prévention à la restauration esthétique, pour patients de tous âges.</p>
+  </div>
+</header>
+
+<!-- CATEGORY 1 : PRÉVENTION & SOINS DE BASE -->
+<section class="cat-section" aria-labelledby="cat1">
+  <div class="container">
+    <div class="cat-head rv">
+      <span class="cat-num" aria-hidden="true">01</span>
+      <h2 class="cat-title" id="cat1">Prévention &amp; Soins de base</h2>
+      <p class="cat-desc">La santé dentaire commence par la prévention. Ces soins fondamentaux constituent la base d'une bonne hygiène bucco-dentaire durable.</p>
+    </div>
+    <div class="srv-list">
+      <div class="srv-row rv d1">
+        <div class="srv-row-icon" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="16" stroke="currentColor" stroke-width="1.8"/><path d="M15 22l5 5 9-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="srv-row-body">
+          <h3 class="srv-row-name">Détartrage &amp; Nettoyage professionnel</h3>
+          <p class="srv-row-desc">Le détartrage permet d'éliminer le tartre accumulé que le brossage quotidien ne peut pas retirer. Un nettoyage professionnel régulier prévient les caries, les gingivites et les maladies parodontales. Suivi d'un polissage pour une surface dentaire lisse et brillante.</p>
+          <div class="srv-row-tags">
+            <span class="tag">Tous âges</span>
+            <span class="tag">Prévention</span>
+            <span class="tag">30 – 60 min</span>
+          </div>
+        </div>
+      </div>
+      <div class="srv-row rv d2">
+        <div class="srv-row-icon" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 44 44" fill="none"><path d="M22 5C15 5 11 11.5 11 17c0 3.5 1.2 6.5 2.5 9.5L17 37c.5 2.5 2 4 4 4 .9 0 1.7-.3 2.3-.8l.7.8c.6.5 1.4.8 2 .8 2 0 3.5-1.5 4-4l3.5-10.5C34.8 23.5 36 20.5 36 17c0-5.5-4-12-14-12z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="srv-row-body">
+          <h3 class="srv-row-name">Soins conservateurs &amp; Traitement des caries</h3>
+          <p class="srv-row-desc">Traitement des caries avec des obturations composites de couleur naturelle, assurant une restauration esthétique et durable. Le Dr. Haouet utilise des techniques mini-invasives pour préserver un maximum de tissu dentaire sain.</p>
+          <div class="srv-row-tags">
+            <span class="tag">Restauration</span>
+            <span class="tag">Esthétique</span>
+            <span class="tag">Durable</span>
+          </div>
+        </div>
+      </div>
+      <div class="srv-row rv d3">
+        <div class="srv-row-icon" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 44 44" fill="none"><path d="M10 34s2.5-12 12-12 12 12 12 12M22 22V12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="22" cy="9" r="4" stroke="currentColor" stroke-width="1.8"/></svg>
+        </div>
+        <div class="srv-row-body">
+          <h3 class="srv-row-name">Pédodontie — Soins dentaires pour enfants</h3>
+          <p class="srv-row-desc">Une approche douce et bienveillante pour les plus jeunes. Le cabinet accueille les enfants dès leur première dent pour des visites de contrôle, des scellements de sillons préventifs et des soins adaptés à leur âge, dans un environnement rassurant.</p>
+          <div class="srv-row-tags">
+            <span class="tag">Enfants</span>
+            <span class="tag">Prévention</span>
+            <span class="tag">Approche douce</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORY 2 : ESTHÉTIQUE & SOURIRE -->
+<section class="cat-section" aria-labelledby="cat2">
+  <div class="container">
+    <div class="cat-head rv">
+      <span class="cat-num" aria-hidden="true">02</span>
+      <h2 class="cat-title" id="cat2">Esthétique &amp; Sourire</h2>
+      <p class="cat-desc">Retrouvez un sourire éclatant et aligné grâce à nos soins esthétiques et orthodontiques adaptés à chaque profil.</p>
+    </div>
+    <div class="srv-list">
+      <div class="srv-row rv d1">
+        <div class="srv-row-icon" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="8" stroke="currentColor" stroke-width="1.8"/><path d="M22 8v4M22 32v4M8 22h4M32 22h4M12.7 12.7l2.8 2.8M28.5 28.5l2.8 2.8M12.7 31.3l2.8-2.8M28.5 15.5l2.8-2.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <div class="srv-row-body">
+          <h3 class="srv-row-name">Blanchiment dentaire professionnel</h3>
+          <p class="srv-row-desc">Le blanchiment en cabinet offre des résultats immédiats et contrôlés, bien supérieurs aux kits disponibles en pharmacie. La procédure est sûre, réalisée sous surveillance médicale, et peut éclaircir les dents de plusieurs teintes en une seule séance.</p>
+          <div class="srv-row-tags">
+            <span class="tag">1 séance</span>
+            <span class="tag">Résultats visibles</span>
+            <span class="tag">Sans douleur</span>
+          </div>
+        </div>
+      </div>
+      <div class="srv-row rv d2">
+        <div class="srv-row-icon" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 44 44" fill="none"><path d="M10 34s2.5-14 12-14 12 14 12 14M18 20v-8M26 20v-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><rect x="13" y="8" width="18" height="6" rx="3" stroke="currentColor" stroke-width="1.8"/></svg>
+        </div>
+        <div class="srv-row-body">
+          <h3 class="srv-row-name">Orthodontie — Alignement dentaire</h3>
+          <p class="srv-row-desc">Correction des malpositions dentaires et des malocclusions chez l'enfant, l'adolescent et l'adulte. Le traitement orthodontique peut s'effectuer avec des bagues métalliques classiques ou des aligneurs transparents pour une discrétion maximale.</p>
+          <div class="srv-row-tags">
+            <span class="tag">Enfants &amp; Adultes</span>
+            <span class="tag">Bagues classiques</span>
+            <span class="tag">Aligneurs transparents</span>
+          </div>
+        </div>
+      </div>
+      <div class="srv-row rv d3">
+        <div class="srv-row-icon" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 44 44" fill="none"><path d="M8 28c4-12 24-12 28 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M14 28c2-6 14-6 16 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <div class="srv-row-body">
+          <h3 class="srv-row-name">Composites esthétiques &amp; Reconstruction</h3>
+          <p class="srv-row-desc">Correction des dents ébréchées, fracturées ou décolorées grâce à des résines composites modélisées à la main. Cette technique préserve la dent naturelle tout en restituant une forme et une couleur parfaitement harmonieuses.</p>
+          <div class="srv-row-tags">
+            <span class="tag">Esthétique</span>
+            <span class="tag">Mini-invasif</span>
+            <span class="tag">Naturel</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORY 3 : RESTAURATION & CHIRURGIE -->
+<section class="cat-section" aria-labelledby="cat3">
+  <div class="container">
+    <div class="cat-head rv">
+      <span class="cat-num" aria-hidden="true">03</span>
+      <h2 class="cat-title" id="cat3">Restauration &amp; Chirurgie</h2>
+      <p class="cat-desc">Pour les cas nécessitant une reconstruction dentaire avancée ou une intervention chirurgicale, le cabinet dispose de l'expertise et des équipements adaptés.</p>
+    </div>
+    <div class="srv-list">
+      <div class="srv-row rv d1">
+        <div class="srv-row-icon" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 44 44" fill="none"><rect x="8" y="20" width="28" height="14" rx="4" stroke="currentColor" stroke-width="1.8"/><path d="M15 20v-4a7 7 0 0114 0v4" stroke="currentColor" stroke-width="1.8"/><circle cx="22" cy="27" r="2.5" fill="currentColor"/></svg>
+        </div>
+        <div class="srv-row-body">
+          <h3 class="srv-row-name">Prothèses dentaires — Couronnes &amp; Bridges</h3>
+          <p class="srv-row-desc">Remplacement ou restauration des dents abîmées par des couronnes tout-céramique ou des bridges fixes. Ces solutions durables restaurent la fonction masticatoire et l'esthétique du sourire, avec une intégration naturelle dans la bouche.</p>
+          <div class="srv-row-tags">
+            <span class="tag">Couronnes céramiques</span>
+            <span class="tag">Bridges fixes</span>
+            <span class="tag">Prothèses amovibles</span>
+          </div>
+        </div>
+      </div>
+      <div class="srv-row rv d2">
+        <div class="srv-row-icon" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 44 44" fill="none"><path d="M14 36l4-12 8-4 8 4 4 12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 20V8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M18 12l4-4 4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="srv-row-body">
+          <h3 class="srv-row-name">Traitement canalaire (Dévitalisation)</h3>
+          <p class="srv-row-desc">Le traitement endodontique permet de sauvegarder une dent dont la pulpe est infectée ou nécrosée. Réalisé sous anesthésie locale, il est indolore et constitue souvent la meilleure alternative à l'extraction pour conserver votre dent naturelle.</p>
+          <div class="srv-row-tags">
+            <span class="tag">Conservation</span>
+            <span class="tag">Sous anesthésie</span>
+            <span class="tag">Indolore</span>
+          </div>
+        </div>
+      </div>
+      <div class="srv-row rv d3">
+        <div class="srv-row-icon" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 44 44" fill="none"><path d="M22 6l3.5 9.5H36l-8 6 3 9.5-9-5.5-9 5.5 3-9.5-8-6h10.5z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="srv-row-body">
+          <h3 class="srv-row-name">Chirurgie dentaire &amp; Extractions</h3>
+          <p class="srv-row-desc">Extraction des dents irrécupérables, dents de sagesse incluses, alvéolectomies et chirurgies osseuses mineures. Chaque intervention est réalisée sous anesthésie locale avec des suites opératoires minimales et un suivi rigoureux.</p>
+          <div class="srv-row-tags">
+            <span class="tag">Extractions</span>
+            <span class="tag">Dents de sagesse</span>
+            <span class="tag">Chirurgie osseuse</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-band">
+  <h2>Prêt à prendre soin de votre sourire ?</h2>
+  <div class="cta-band-rule" aria-hidden="true"></div>
+  <p>Contactez le cabinet pour prendre rendez-vous. Nous sommes disponibles du lundi au samedi et répondons rapidement via WhatsApp.</p>
+  <div class="cta-btns">
+    <a href="https://wa.me/21658184597" class="btn btn-gold" target="_blank" rel="noopener">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Prendre rendez-vous
+    </a>
+    <a href="tel:+21658184597" class="btn btn-ghost-light">
+      <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+      +216 58 184 597
+    </a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="f-brand-name">Dr. Sarra Haouet</div>
+        <div class="f-brand-sub">Chirurgien-Dentiste · Nabeul, Tunisie</div>
+        <p class="f-brand-p">Cabinet dentaire à Nabeul, à proximité de Hammamet et Mrezga. Soins bucco-dentaires de qualité pour toute la famille.</p>
+      </div>
+      <nav class="f-col" aria-label="Liens du pied de page">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="./index.html">Accueil</a></li>
+          <li><a href="./services.html">Services</a></li>
+          <li><a href="./equipe.html">Le Cabinet</a></li>
+          <li><a href="./index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="f-col">
+        <h4>Nous contacter</h4>
+        <ul>
+          <li><a href="tel:+21658184597">+216 58 184 597</a></li>
+          <li><a href="https://wa.me/21658184597" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="https://www.google.com/maps/place/?q=place_id:ChIJSaQ5acmYAhMRW91gcx6u7eg" target="_blank" rel="noopener">Google Maps</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024 Dr. Sarra Haouet — Tous droits réservés</span>
+      <span>Nabeul 8000, Tunisie</span>
+    </div>
+  </div>
+</footer>
+
+<!-- FLOATING CTA -->
+<div class="fcta" aria-label="Actions rapides">
+  <a href="tel:+21658184597" class="fab fab-call" aria-label="Appeler le cabinet">
+    <svg width="17" height="17" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+    <span>Appeler</span>
+  </a>
+  <a href="https://wa.me/21658184597" class="fab fab-wa" target="_blank" rel="noopener" aria-label="Contacter via WhatsApp">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <span>WhatsApp</span>
+  </a>
+</div>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 50); }, { passive: true });
+  const ham = document.getElementById('ham');
+  const mobNav = document.getElementById('mobNav');
+  ham.addEventListener('click', () => {
+    const open = ham.classList.toggle('open');
+    ham.setAttribute('aria-expanded', open);
+    mobNav.classList.toggle('open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  function closeMob() {
+    ham.classList.remove('open'); ham.setAttribute('aria-expanded', 'false');
+    mobNav.classList.remove('open'); document.body.style.overflow = '';
+  }
+  const revObs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); revObs.unobserve(e.target); } });
+  }, { threshold: 0.06 });
+  document.querySelectorAll('.rv').forEach(el => revObs.observe(el));
+  // Trigger nav scrolled state if page loaded scrolled
+  nav.classList.toggle('scrolled', window.scrollY > 50);
+</script>
+</body>
+</html>

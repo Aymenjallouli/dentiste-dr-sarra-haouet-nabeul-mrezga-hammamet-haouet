@@ -1,0 +1,24 @@
+{
+  "place_id": "ChIJSaQ5acmYAhMRW91gcx6u7eg",
+  "name": "Dentiste - Dr Sarra Haouet Nabeul Mrezga Hammamet",
+  "category": "Dentiste",
+  "city": "haouet",
+  "address": "1er étage App, au-dessus de l’enseigne Hamadi Abid, Imm Takwa, 105, Nabeul‎ 8000, Tunisie",
+  "phone": "+216 58 184 597",
+  "whatsapp": "21658184597",
+  "rating": 4.6,
+  "reviews_count": 80,
+  "hours": "samedi: 09:00–13:00 · dimanche: Fermé · lundi: 09:00–15:00 · mardi: 09:00–15:00 · mercredi: 09:00–15:00 · jeudi: 09:00–15:00 · vendredi: 09:00–15:00",
+  "has_website": false,
+  "website": "",
+  "description": "",
+  "services": [],
+  "photos": [
+    "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=f5IkkWPyQJxcCYQHVKRuqQ&cb_client=search.gws-prod.gps&w=211&h=120&yaw=313.4143&pitch=0&thumbfov=100"
+  ],
+  "reviews": [],
+  "maps_query": "1er étage App, au-dessus de l’enseigne Hamadi Abid, Imm Takwa, 105, Nabeul‎ 8000, Tunisie",
+  "maps_uri": "https://www.google.com/maps/place/?q=place_id:ChIJSaQ5acmYAhMRW91gcx6u7eg",
+  "facebook": "",
+  "instagram": ""
+}

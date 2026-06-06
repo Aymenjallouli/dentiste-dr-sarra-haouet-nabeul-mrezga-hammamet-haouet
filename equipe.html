@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Le Cabinet — Dr. Sarra Haouet, Dentiste à Nabeul</title>
+  <meta name="description" content="Découvrez le cabinet dentaire du Dr. Sarra Haouet à Nabeul. Environnement moderne, approche bienveillante et soins de qualité pour toute la famille.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --c-ink:      #0E2340;
+      --c-navy:     #1B3D6E;
+      --c-navy-mid: #2A5A9A;
+      --c-gold:     #C59B52;
+      --c-gold-lt:  #F4E9CC;
+      --c-bg:       #F7F9FB;
+      --c-bg-alt:   #EEF3FA;
+      --c-surface:  #FFFFFF;
+      --c-text:     #1A2332;
+      --c-muted:    #6B7A8D;
+      --c-border:   #D8E2EF;
+      --c-dark:     #0A1828;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Nunito', sans-serif; color: var(--c-text); background: var(--c-bg); overflow-x: hidden; }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── NAV (identical) ── */
+    .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; display: flex; align-items: center; justify-content: space-between; padding: 1.5rem 3rem; transition: background 0.35s, box-shadow 0.35s, padding 0.35s; }
+    .nav.scrolled { background: rgba(255,255,255,0.93); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: 0 1px 28px rgba(14,35,64,0.1); padding: 0.875rem 3rem; }
+    .nav-logo { display: flex; flex-direction: column; gap: 0.1rem; }
+    .nav-logo-name { font-family: 'DM Serif Display', serif; font-size: 1.1rem; line-height: 1.1; color: #fff; transition: color 0.3s; }
+    .nav-logo-tag { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--c-gold); font-weight: 700; }
+    .nav.scrolled .nav-logo-name { color: var(--c-ink); }
+    .nav-links { display: flex; align-items: center; gap: 2.25rem; list-style: none; }
+    .nav-links a { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: rgba(255,255,255,0.8); transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--c-gold); }
+    .nav.scrolled .nav-links a { color: var(--c-muted); }
+    .nav.scrolled .nav-links a:hover, .nav.scrolled .nav-links a.active { color: var(--c-navy); }
+    .nav-rdv { background: var(--c-gold); color: var(--c-ink) !important; padding: 0.55rem 1.3rem; font-weight: 800 !important; }
+    .nav-rdv:hover { background: #d4a83c !important; color: var(--c-ink) !important; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: #fff; transition: all 0.3s; }
+    .nav.scrolled .hamburger span { background: var(--c-ink); }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mob-nav { display: none; position: fixed; inset: 0; z-index: 199; background: var(--c-dark); flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem; }
+    .mob-nav.open { display: flex; }
+    .mob-nav a { font-family: 'DM Serif Display', serif; font-size: 2.25rem; color: #fff; transition: color 0.2s; }
+    .mob-nav a:hover { color: var(--c-gold); }
+    .mob-nav-phone { font-size: 1rem !important; font-family: 'Nunito', sans-serif !important; color: var(--c-gold) !important; font-weight: 700; border: 1px solid rgba(197,155,82,0.4); padding: 0.75rem 2rem; }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      background: var(--c-dark);
+      position: relative; overflow: hidden;
+      padding: 10rem 3rem 6rem;
+      min-height: 52vh; display: flex; align-items: flex-end;
+    }
+    .page-hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 20%; opacity: 0.2; }
+    .page-hero-inner { position: relative; z-index: 2; max-width: 1160px; margin: 0 auto; width: 100%; }
+    .page-eyebrow { font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--c-gold); font-weight: 800; margin-bottom: 1rem; }
+    .page-title { font-family: 'DM Serif Display', serif; font-size: clamp(2.5rem, 5vw, 4.25rem); color: #fff; line-height: 1.1; margin-bottom: 0.75rem; }
+    .page-sub { font-size: 1.05rem; color: rgba(255,255,255,0.6); max-width: 540px; line-height: 1.7; }
+    .page-rule { width: 52px; height: 2px; background: var(--c-gold); margin: 1.5rem 0; }
+
+    /* ── LAYOUT ── */
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 2rem; }
+    .s-pad { padding: 6rem 0; }
+    .eyebrow { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--c-gold); font-weight: 800; margin-bottom: 0.75rem; }
+    .s-title { font-family: 'DM Serif Display', serif; font-size: clamp(1.6rem, 3vw, 2.5rem); color: var(--c-ink); line-height: 1.2; margin-bottom: 1rem; }
+    .s-rule { width: 46px; height: 2px; background: var(--c-gold); margin-bottom: 1.5rem; }
+
+    /* ── DR PROFILE ── */
+    .profile { background: var(--c-surface); }
+    .profile-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 6rem; align-items: start; }
+    .profile-img-col { position: relative; }
+    .profile-img {
+      width: 100%; aspect-ratio: 3/4;
+      object-fit: cover; object-position: center top;
+    }
+    .profile-card {
+      position: absolute; bottom: -2rem; right: -2rem;
+      background: var(--c-navy); color: #fff;
+      padding: 1.5rem 1.75rem; max-width: 200px;
+    }
+    .profile-card-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.5rem; color: var(--c-gold); line-height: 1;
+    }
+    .profile-card-lbl { font-size: 0.75rem; color: rgba(255,255,255,0.7); line-height: 1.4; margin-top: 0.25rem; }
+    .profile-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.75rem);
+      color: var(--c-ink); margin-bottom: 0.25rem;
+    }
+    .profile-role {
+      font-family: 'DM Serif Display', serif; font-style: italic;
+      font-size: 1.1rem; color: var(--c-muted); margin-bottom: 2rem;
+    }
+    .profile-rule { width: 46px; height: 2px; background: var(--c-gold); margin-bottom: 2rem; }
+    .profile-bio { font-size: 0.975rem; color: var(--c-muted); line-height: 1.85; margin-bottom: 1.25rem; }
+    .profile-creds { margin-top: 2rem; display: flex; flex-direction: column; gap: 0; }
+    .cred-item {
+      display: flex; gap: 1.25rem; align-items: flex-start;
+      padding: 1.1rem 0; border-bottom: 1px solid var(--c-border);
+    }
+    .cred-item:first-child { border-top: 1px solid var(--c-border); }
+    .cred-icon {
+      width: 40px; height: 40px; background: var(--c-gold-lt);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; color: var(--c-gold);
+    }
+    .cred-text h4 { font-size: 0.875rem; font-weight: 700; color: var(--c-ink); margin-bottom: 0.2rem; }
+    .cred-text p { font-size: 0.825rem; color: var(--c-muted); line-height: 1.5; }
+
+    /* ── PHILOSOPHY ── */
+    .philosophy { background: var(--c-navy); padding: 6rem 0; }
+    .philosophy-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .philosophy-img { position: relative; }
+    .philosophy-img img { width: 100%; height: 440px; object-fit: cover; }
+    .philosophy-img-accent {
+      position: absolute; top: -1rem; left: -1rem;
+      width: 60%; height: 60%;
+      border: 2px solid rgba(197,155,82,0.35); z-index: -1;
+    }
+    .philosophy-text .eyebrow { color: var(--c-gold); }
+    .philosophy-text .s-title { color: #fff; }
+    .philosophy-text p { font-size: 0.975rem; color: rgba(255,255,255,0.7); line-height: 1.85; margin-bottom: 1.25rem; }
+    .philosophy-text .s-rule { background: var(--c-gold); }
+
+    /* ── VALUES ── */
+    .values { background: var(--c-bg); }
+    .values-intro { text-align: center; max-width: 600px; margin: 0 auto 4rem; }
+    .values-intro .s-rule { margin: 1.5rem auto; }
+    .values-intro p { font-size: 1rem; color: var(--c-muted); line-height: 1.8; }
+    .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+    .val-card { background: var(--c-surface); border: 1px solid var(--c-border); padding: 2.25rem 1.75rem; text-align: center; }
+    .val-icon {
+      width: 60px; height: 60px; background: var(--c-gold-lt);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--c-gold); margin: 0 auto 1.25rem;
+    }
+    .val-title { font-family: 'DM Serif Display', serif; font-size: 1.1rem; color: var(--c-ink); margin-bottom: 0.6rem; }
+    .val-desc { font-size: 0.875rem; color: var(--c-muted); line-height: 1.7; }
+
+    /* ── CTA BAND ── */
+    .cta-band { background: var(--c-ink); padding: 5rem 2rem; text-align: center; }
+    .cta-band h2 { font-family: 'DM Serif Display', serif; font-size: clamp(1.75rem, 3.5vw, 2.75rem); color: #fff; margin-bottom: 0.75rem; }
+    .cta-band-rule { width: 46px; height: 2px; background: var(--c-gold); margin: 0 auto 1.5rem; }
+    .cta-band p { font-size: 0.9rem; color: rgba(255,255,255,0.65); margin-bottom: 2.5rem; max-width: 480px; margin-left: auto; margin-right: auto; line-height: 1.7; }
+    .cta-btns { display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+    .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.9rem 1.8rem; font-family: 'Nunito', sans-serif; font-size: 0.8rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; border: none; transition: all 0.25s; }
+    .btn-gold { background: var(--c-gold); color: var(--c-ink); }
+    .btn-gold:hover { background: #d4a83c; transform: translateY(-2px); box-shadow: 0 10px 28px rgba(197,155,82,0.35); }
+    .btn-ghost-light { background: transparent; color: rgba(255,255,255,0.8); border: 1px solid rgba(255,255,255,0.25); }
+    .btn-ghost-light:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.6); color: #fff; }
+
+    /* ── FOOTER ── */
+    .footer { background: var(--c-dark); color: rgba(255,255,255,0.65); padding: 3.5rem 0 1.5rem; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; margin-bottom: 2.5rem; }
+    .f-brand-name { font-family: 'DM Serif Display', serif; font-size: 1.2rem; color: #fff; margin-bottom: 0.35rem; }
+    .f-brand-sub { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--c-gold); margin-bottom: 1rem; font-weight: 700; }
+    .f-brand-p { font-size: 0.85rem; line-height: 1.7; max-width: 280px; }
+    .f-col h4 { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--c-gold); font-weight: 800; margin-bottom: 1rem; }
+    .f-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .f-col ul a { font-size: 0.875rem; transition: color 0.2s; }
+    .f-col ul a:hover { color: #fff; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.78rem; }
+
+    /* ── FLOATING CTA ── */
+    .fcta { position: fixed; bottom: 2rem; right: 1.75rem; z-index: 190; display: flex; flex-direction: column; gap: 0.7rem; }
+    .fab { display: flex; align-items: center; gap: 0.6rem; padding: 0.85rem 1.25rem; border-radius: 100px; font-size: 0.82rem; font-weight: 800; box-shadow: 0 4px 22px rgba(0,0,0,0.22); transition: transform 0.2s, box-shadow 0.2s; white-space: nowrap; }
+    .fab:hover { transform: translateY(-2px) scale(1.04); box-shadow: 0 8px 30px rgba(0,0,0,0.28); }
+    .fab-call { background: var(--c-navy); color: #fff; }
+    .fab-wa { background: #25D366; color: #fff; }
+
+    /* ── REVEAL ── */
+    .rv { opacity: 0; transform: translateY(26px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .rv.in { opacity: 1; transform: none; }
+    .d1 { transition-delay: 0.1s; } .d2 { transition-delay: 0.2s; } .d3 { transition-delay: 0.3s; } .d4 { transition-delay: 0.4s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .nav { padding: 1.25rem 2rem; } .nav.scrolled { padding: 0.75rem 2rem; }
+      .profile-grid { gap: 3rem; }
+      .philosophy-grid { gap: 3rem; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .nav { padding: 1rem 1.5rem; } .nav.scrolled { padding: 0.75rem 1.5rem; }
+      .nav-links { display: none; } .hamburger { display: flex; }
+      .page-hero { padding: 8rem 1.5rem 4rem; }
+      .profile-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .profile-card { display: none; }
+      .philosophy { padding: 4rem 0; }
+      .philosophy-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .philosophy-img img { height: 280px; }
+      .philosophy-img-accent { display: none; }
+      .values-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+      .fcta { bottom: 1.25rem; right: 1rem; }
+      .fab span { display: none; }
+      .fab { padding: 0.9rem; border-radius: 50%; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav" aria-label="Navigation principale">
+  <a href="./index.html" class="nav-logo" aria-label="Dr. Sarra Haouet – Accueil">
+    <span class="nav-logo-name">Dr. Sarra Haouet</span>
+    <span class="nav-logo-tag">Dentiste · Nabeul</span>
+  </a>
+  <ul class="nav-links" role="list">
+    <li><a href="./index.html">Accueil</a></li>
+    <li><a href="./services.html">Services</a></li>
+    <li><a href="./equipe.html" class="active">Le Cabinet</a></li>
+    <li><a href="./index.html#contact">Contact</a></li>
+    <li><a href="https://wa.me/21658184597" class="nav-rdv" target="_blank" rel="noopener">Rendez-vous</a></li>
+  </ul>
+  <button class="hamburger" id="ham" aria-label="Ouvrir le menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mob-nav" id="mobNav" role="dialog" aria-label="Menu">
+  <a href="./index.html" onclick="closeMob()">Accueil</a>
+  <a href="./services.html" onclick="closeMob()">Services</a>
+  <a href="./equipe.html" onclick="closeMob()">Le Cabinet</a>
+  <a href="./index.html#contact" onclick="closeMob()">Contact</a>
+  <a href="tel:+21658184597" class="mob-nav-phone" onclick="closeMob()">+216 58 184 597</a>
+</div>
+
+<!-- PAGE HERO -->
+<header class="page-hero" aria-label="Le cabinet dentaire">
+  <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=1400&q=80" alt="" loading="eager" aria-hidden="true">
+  <div class="page-hero-inner">
+    <p class="page-eyebrow">À propos</p>
+    <h1 class="page-title">Le Cabinet</h1>
+    <div class="page-rule" aria-hidden="true"></div>
+    <p class="page-sub">Rencontrez le Dr. Sarra Haouet et découvrez un cabinet dentaire pensé pour votre confort, votre santé et votre confiance.</p>
+  </div>
+</header>
+
+<!-- DR PROFILE -->
+<section class="profile s-pad" aria-labelledby="profile-h2">
+  <div class="container">
+    <div class="profile-grid">
+      <div class="profile-img-col rv">
+        <img
+          class="profile-img"
+          src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=700&q=80"
+          alt="Dr. Sarra Haouet, Chirurgien-Dentiste à Nabeul"
+          loading="lazy">
+        <div class="profile-card" aria-hidden="true">
+          <div class="profile-card-num">4,6</div>
+          <div class="profile-card-lbl">Note Google<br>80 avis patients</div>
+        </div>
+      </div>
+      <div>
+        <div class="eyebrow rv">Chirurgien-Dentiste</div>
+        <h2 class="profile-name rv d1" id="profile-h2">Dr. Sarra Haouet</h2>
+        <p class="profile-role rv d1">Dentiste à Nabeul · Mrezga · Hammamet</p>
+        <div class="profile-rule rv d2" aria-hidden="true"></div>
+        <p class="profile-bio rv d2">Le Dr. Sarra Haouet exerce la chirurgie dentaire à Nabeul dans un cabinet moderne équipé des dernières technologies. Passionnée par son métier, elle place la relation de confiance avec ses patients au cœur de sa pratique.</p>
+        <p class="profile-bio rv d3">Qu'il s'agisse d'un simple détartrage, d'une restauration esthétique ou d'une intervention chirurgicale, chaque acte est réalisé avec la même rigueur, la même douceur et le même souci du détail. Le cabinet accueille des patients de tout âge, du jeune enfant à l'adulte senior.</p>
+        <div class="profile-creds rv d3" role="list" aria-label="Compétences et approche">
+          <div class="cred-item" role="listitem">
+            <div class="cred-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <div class="cred-text">
+              <h4>Formation universitaire en chirurgie dentaire</h4>
+              <p>Diplômée en chirurgie dentaire, avec une maîtrise des techniques modernes de soins conservateurs, esthétiques et chirurgicaux.</p>
+            </div>
+          </div>
+          <div class="cred-item" role="listitem">
+            <div class="cred-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+            </div>
+            <div class="cred-text">
+              <h4>Équipement numérique de pointe</h4>
+              <p>Radiographies numériques faible dose, matériaux composites dernière génération, instruments à ultrasons pour des soins plus précis et confortables.</p>
+            </div>
+          </div>
+          <div class="cred-item" role="listitem">
+            <div class="cred-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+            </div>
+            <div class="cred-text">
+              <h4>Approche humaine et bienveillante</h4>
+              <p>Prise en charge des patients anxieux, communication claire sur chaque acte, respect du rythme et du confort de chacun.</p>
+            </div>
+          </div>
+          <div class="cred-item" role="listitem">
+            <div class="cred-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div class="cred-text">
+              <h4>Hygiène et stérilisation irréprochables</h4>
+              <p>Protocoles stricts de désinfection et stérilisation, conformes aux normes en vigueur, pour la sécurité totale de nos patients.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section class="philosophy" aria-labelledby="phil-h2">
+  <div class="container">
+    <div class="philosophy-grid">
+      <div class="philosophy-text">
+        <div class="eyebrow rv">Notre philosophie</div>
+        <h2 class="s-title rv d1" id="phil-h2">Prévenir autant<br>que guérir</h2>
+        <div class="s-rule rv d1" aria-hidden="true"></div>
+        <p class="rv d2">La santé bucco-dentaire est un investissement à long terme. Le Dr. Haouet accorde autant d'importance à l'éducation préventive qu'aux soins curatifs. Chaque consultation est l'occasion d'accompagner les patients dans de bonnes habitudes d'hygiène.</p>
+        <p class="rv d3">Nous croyons qu'une visite chez le dentiste ne doit pas être synonyme d'appréhension. Notre objectif est de transformer cette expérience en moment de soin positif, y compris pour les patients qui n'ont pas consulté depuis longtemps.</p>
+        <p class="rv d3">La transparence est au cœur de notre pratique : chaque traitement proposé est expliqué clairement, avec ses bénéfices et ses alternatives, pour que le patient prenne des décisions éclairées.</p>
+      </div>
+      <div class="philosophy-img rv d2">
+        <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=800&q=80" alt="Consultation dentaire Dr. Sarra Haouet" loading="lazy">
+        <div class="philosophy-img-accent" aria-hidden="true"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="values s-pad" aria-labelledby="val-h2">
+  <div class="container">
+    <div class="values-intro rv">
+      <div class="eyebrow">Nos engagements</div>
+      <h2 class="s-title" id="val-h2">Ce qui nous guide au quotidien</h2>
+      <div class="s-rule" aria-hidden="true"></div>
+      <p>Trois valeurs fondamentales guident chacun de nos actes et chacune de nos décisions au sein du cabinet.</p>
+    </div>
+    <div class="values-grid">
+      <article class="val-card rv d1">
+        <div class="val-icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <h3 class="val-title">Excellence clinique</h3>
+        <p class="val-desc">Chaque soin est réalisé avec les meilleurs matériaux disponibles et les techniques les plus modernes. Nous ne faisons aucun compromis sur la qualité.</p>
+      </article>
+      <article class="val-card rv d2">
+        <div class="val-icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <h3 class="val-title">Relation de confiance</h3>
+        <p class="val-desc">Chaque patient est unique. Nous prenons le temps d'écouter, d'expliquer et d'accompagner, pour une relation durable fondée sur le respect mutuel.</p>
+      </article>
+      <article class="val-card rv d3">
+        <div class="val-icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3 class="val-title">Sécurité &amp; Confort</h3>
+        <p class="val-desc">Protocoles de stérilisation rigoureux, anesthésies adaptées et suivi post-opératoire soigné pour que chaque intervention se déroule en toute sécurité.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-band">
+  <h2>Prendre rendez-vous</h2>
+  <div class="cta-band-rule" aria-hidden="true"></div>
+  <p>Cabinet ouvert du lundi au vendredi de 09h à 15h et le samedi de 09h à 13h. Nabeul 8000, Tunisie.</p>
+  <div class="cta-btns">
+    <a href="https://wa.me/21658184597" class="btn btn-gold" target="_blank" rel="noopener">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Via WhatsApp
+    </a>
+    <a href="tel:+21658184597" class="btn btn-ghost-light">
+      <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+      +216 58 184 597
+    </a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="f-brand-name">Dr. Sarra Haouet</div>
+        <div class="f-brand-sub">Chirurgien-Dentiste · Nabeul, Tunisie</div>
+        <p class="f-brand-p">Cabinet dentaire à Nabeul, à proximité de Hammamet et Mrezga. Soins bucco-dentaires de qualité pour toute la famille.</p>
+      </div>
+      <nav class="f-col" aria-label="Liens du pied de page">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="./index.html">Accueil</a></li>
+          <li><a href="./services.html">Services</a></li>
+          <li><a href="./equipe.html">Le Cabinet</a></li>
+          <li><a href="./index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="f-col">
+        <h4>Nous contacter</h4>
+        <ul>
+          <li><a href="tel:+21658184597">+216 58 184 597</a></li>
+          <li><a href="https://wa.me/21658184597" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="https://www.google.com/maps/place/?q=place_id:ChIJSaQ5acmYAhMRW91gcx6u7eg" target="_blank" rel="noopener">Google Maps</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024 Dr. Sarra Haouet — Tous droits réservés</span>
+      <span>Nabeul 8000, Tunisie</span>
+    </div>
+  </div>
+</footer>
+
+<!-- FLOATING CTA -->
+<div class="fcta" aria-label="Actions rapides">
+  <a href="tel:+21658184597" class="fab fab-call" aria-label="Appeler le cabinet">
+    <svg width="17" height="17" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+    <span>Appeler</span>
+  </a>
+  <a href="https://wa.me/21658184597" class="fab fab-wa" target="_blank" rel="noopener" aria-label="Contacter via WhatsApp">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <span>WhatsApp</span>
+  </a>
+</div>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 50); }, { passive: true });
+  const ham = document.getElementById('ham');
+  const mobNav = document.getElementById('mobNav');
+  ham.addEventListener('click', () => {
+    const open = ham.classList.toggle('open');
+    ham.setAttribute('aria-expanded', open);
+    mobNav.classList.toggle('open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  function closeMob() {
+    ham.classList.remove('open'); ham.setAttribute('aria-expanded', 'false');
+    mobNav.classList.remove('open'); document.body.style.overflow = '';
+  }
+  const revObs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); revObs.unobserve(e.target); } });
+  }, { threshold: 0.06 });
+  document.querySelectorAll('.rv').forEach(el => revObs.observe(el));
+  nav.classList.toggle('scrolled', window.scrollY > 50);
+</script>
+</body>
+</html>
